@@ -5,24 +5,14 @@ import {Button} from "../Button/Button";
 
 type CounterWindowType = {
     value: number
-    setValue: (value: number) => void
     startValue: number
     maxValue: number
-
-
-    editMode: boolean
-    setEditMode: (editMode: boolean) => void
+    increment: () => void
+    resetValue: () => void
+    setEditMode: () => void
 }
 
 export const CounterWindow = (props: CounterWindowType) => {
-
-    const incValue = () => {
-        props.setValue(props.value + 1)
-    }
-    const ResetValue = () => {
-        props.setValue(props.startValue)
-    }
-
 
     const numberFullClass = props.value >= props.maxValue ? s.numberFull : s.number
     const disabledSet = props.startValue >= props.maxValue ? props.startValue < 0 : props.maxValue === props.value
@@ -37,12 +27,16 @@ export const CounterWindow = (props: CounterWindowType) => {
 
             <div className={s.buttons}>
                 <Button title={'inc'}
-                        onClick={incValue}
+                        onClick={props.increment}
                         disabled={disabledSet}
 
                 />
                 <Button title={'reset'}
-                        onClick={ResetValue}
+                        onClick={props.resetValue}
+                        disabled={false}
+                />
+                <Button title={'set'}
+                        onClick={props.setEditMode}
                         disabled={false}
                 />
 

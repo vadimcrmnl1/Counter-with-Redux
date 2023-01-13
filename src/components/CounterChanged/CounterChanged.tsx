@@ -5,22 +5,13 @@ import {Button} from "../Button/Button";
 type CounterChangedType = {
     startValue: number
     maxValue: number
-
+    setMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
+    setStartValue: (e: ChangeEvent<HTMLInputElement>) => void
+    setEditMode: () => void
 
 }
 
 export const CounterChanged = (props: CounterChangedType) => {
-    let onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
-
-
-    }
-    let onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-
-    }
-    let onSetClick = () => {
-
-    }
-
 
     const disabledSet = props.startValue >= props.maxValue
         ? true : props.startValue < 0
@@ -34,7 +25,7 @@ export const CounterChanged = (props: CounterChangedType) => {
                     <input className={s.defaultInput}
                            key={'MAX_VALUE'}
                            value={props.maxValue}
-                           onChange={onChangeMaxValue}
+                           onChange={props.setMaxValue}
                            type={'number'}
 
                     />
@@ -44,7 +35,7 @@ export const CounterChanged = (props: CounterChangedType) => {
                     <input className={finalInputClass}
                            key={'START_VALUE'}
                            value={props.startValue}
-                           onChange={onChangeStartValue}
+                           onChange={props.setStartValue}
                            type={'number'}
 
                     />
@@ -53,7 +44,7 @@ export const CounterChanged = (props: CounterChangedType) => {
             <div className={'number' ? s.buttons : s.disabled}>
                 <Button key={'setValue'}
                         title={'set'}
-                        onClick={onSetClick}
+                        onClick={props.setEditMode}
                         disabled={disabledSet}
 
                 />
