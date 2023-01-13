@@ -1,5 +1,6 @@
 {
   "name": "counter-with-redux",
+  "homepage": "https://vadimcrmnl1.github.io/Counter-with-Redux/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
