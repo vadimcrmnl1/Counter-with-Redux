@@ -13,9 +13,8 @@ type CounterChangedType = {
 
 export const CounterChanged = (props: CounterChangedType) => {
 
-    const disabledSet = props.startValue >= props.maxValue
-        ? true : props.startValue < 0
-    const finalInputClass = disabledSet ? s.errorInput : s.defaultInput
+    const enableSet = props.maxValue > props.startValue && props.startValue >= 0
+    const finalInputClass = enableSet ? s.defaultInput : s.errorInput
 
     return (
         <div className={s.CounterChanged}>
@@ -45,7 +44,7 @@ export const CounterChanged = (props: CounterChangedType) => {
                 <Button key={'setValue'}
                         title={'set'}
                         onClick={props.setEditMode}
-                        disabled={disabledSet}
+                        disabled={!enableSet}
 
                 />
 
